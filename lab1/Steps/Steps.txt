@@ -1,0 +1,15 @@
+1) Downloading a VM Image from Vagrant Cloud: 
+   >> vagrant box add centos/7
+
+2) Initializing the newly added VM:
+   >> vagrant init centos/7
+
+3) validating the initialization
+   >> vagrant validate
+
+4) Running the VM:
+   >> vagrant up
+
+
+RQ:: To list all the downloaded VMs on Vagran:
+     >> vagrant box list

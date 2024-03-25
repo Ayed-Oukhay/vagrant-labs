@@ -1,0 +1,13 @@
+1) vagrant box add --box-version 20190425.0.0 ubuntu/trusty64
+2) vagrant init ubuntu/trusty64
+3) vagrant validate
+4) vagrant up
+5) vagrant ssh
+6) >>sudo apt update
+7) >>sudo apt install nginx
+8) >>sudo service nginx start
+9) >>sudo service nginx status
+10) >>sudo update-rc.d nginx defaults
+11) >>exit
+12) vagrant package --output lab2.box
+13) Go to VagrantCloud, creeate a new box, configure it and then add the .box file to it
