@@ -19,6 +19,7 @@ The aim of this lab is to Install Vagrant, and test out some commands
 
 4) Accessing the VM through Vagrant:
 >> `vagrant ssh`
+
 ![6](https://github.com/Ayed-Oukhay/vagrant-labs/assets/65503307/8389610e-52f8-431d-92aa-1cb404593158)
 
 5) Checking the global-status if vagrant:
