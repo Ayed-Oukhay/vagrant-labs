@@ -31,4 +31,4 @@ o VM3 : web2, ip: 10.0.0.12 (serveur web actif avec une page web)
 ![6](https://github.com/Ayed-Oukhay/vagrant-labs/assets/65503307/cfc03e47-adc5-4f44-b478-1be862af99b9)
 
 4) Accessing the VMs shell and verifying that the hostname was changed
-==> ERROR (Fixing it): it was changed at first but then it wouldn't change anymore
+==> ERROR (Fixing it): it was changed at first but then it wouldn't change anymore 
