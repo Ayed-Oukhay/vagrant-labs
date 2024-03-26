@@ -1,0 +1,53 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+Vagrant.configure("2") do |config|
+  (1..3).each do |i|
+    config.vm.define "vm#{i}" do |node|
+      # Configuration des box
+      node.vm.box = "ubuntu/xenial64"
+  
+      # Variables
+      num_cpus = 1
+      ram_size = 1024
+
+      # Configuration des ressources de la machine virtuelle
+      node.vm.provider "virtualbox" do |vb|
+        vb.memory = ram_size
+        vb.cpus = num_cpus
+      end
+
+      # Configuration du réseau
+      node.vm.network "forwarded_port", guest: 80, host: "808#{i}"
+  
+      # Configuration du réseau avec IP fixe privée
+      node.vm.network "private_network", type: "static", ip: "10.0.0.#{i + 9}"
+
+      # Configuration du hostname
+      case i
+      when 1
+        node.vm.hostname = "lb"
+      when 2
+        node.vm.hostname = "web1"
+      when 3
+        node.vm.hostname = "web2"
+      end
+
+      # Configuration du script de provisionnement
+      if i == 2 || i == 3
+        node.vm.provision "shell", path: "./install_web_apache2.sh"
+      end
+    end
+  end
+
+  # Configuration du hostsupdater 
+  config.hostsupdater.aliases = {
+    "10.0.0.10" => ["lb11"],
+    "10.0.0.11" => ["web11"],
+    "10.0.0.12" => ["web21"]
+  }
+end
