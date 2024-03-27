@@ -1,0 +1,24 @@
+Vagrant.configure("2") do |config|
+  # Configuration de la box
+  config.vm.box = "martyarnaud31/nginx"
+  
+  # Variables
+  num_cpus = 1
+  ram_size = 1024
+
+  # Configuration des ressources de la machine virtuelle
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = ram_size
+    vb.cpus = num_cpus
+  end
+
+  # Configuration du réseau
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+  
+  # Configuration du réseau avec IP fixe privée
+  config.vm.network "private_network", type: "static", ip: "10.0.0.10"
+
+  # Configuration du partage de fichiers
+  config.vm.synced_folder "./website", "/usr/share/nginx/html"
+
+end
